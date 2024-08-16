@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Página con Carrusel</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .header {
+            background-color: #333;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+        }
+        .menu {
+            display: flex;
+            justify-content: center;
+            background-color: #444;
+            padding: 1rem;
+        }
+        .menu a {
+            color: white;
+            margin: 0 1rem;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .menu a:hover {
+            text-decoration: underline;
+        }
+        .carousel {
+            position: relative;
+            max-width:80%;
+            overflow: hidden;
+            margin: 0 auto;
+        }
+        .carousel img {
+            width: 100%;
+            height:50%;
+            display: block;
+        }
+        .carousel .slides {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+        .carousel .slide {
+            min-width: 100%;
+            box-sizing: border-box;
+        }
+        .carousel .controls {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+        }
+        .carousel .control {
+            background: rgba(0,0,0,0.5);
+            color: white;
+            border: none;
+            padding: 1rem;
+            cursor: pointer;
+        }
+        .products {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            padding: 2rem;
+        }
+        .products .product {
+            width: 30%;
+            box-sizing: border-box;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        .products img {
+            width: 50%;
+            height: auto;
+        }
+        .footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>MAKEUP MELX</h1>
+    </div>
+
+    <div class="menu">
+        <a href="index.html">Inicio</a>
+        <a href="sobrepagina.html">Sobre Nosotros</a>
+        <a href="servicios.html">Servicios</a>
+        <a href="productos.html">Productos</a>
+        <a href="contacto.html">Contacto</a>
+        <a href="#blog">Blog</a>
+    </div>
+<BR>
+    <div class="carousel">
+        <div class="slides">
+            <div class="slide">
+                <img src="c:\Users\cbtis\Downloads\makeup1.jpg" alt="Imagen 1">
+            </div>
+            <div class="slide">
+                <img src="c:\Users\cbtis\Downloads\makeup4.jpg" alt="Imagen 2">
+            </div>
+            <div class="slide">
+                <img src="c:\Users\cbtis\Downloads\makeup3.webp" alt="Imagen 3">
+            </div>
+        </div>
+        <div class="controls">
+            <button class="control" id="prev">&lt;</button>
+            <button class="control" id="next">&gt;</button>
+        </div>
+    </div>
+
+    <div class="products">
+        <div class="product">
+            <img src="c:\Users\cbtis\Downloads\BASES.jpg" alt="Producto 1">
+            <h3>Base liquida maquillaje maybelline</h3>
+            <p>$286</p>
+        </div>
+        <div class="product">
+            <img src="c:\Users\cbtis\Downloads\RIMEL.png" alt="Producto 2">
+            <h3>Maybelline sky high mascara vulumizingh</h3>
+            <p>$179</p>
+        </div>
+        <div class="product">
+            <img src="c:\Users\cbtis\Downloads\GLOSS.webp" alt="Producto 3">
+            <h3>Lifter gloss brillo de labios efecto plump Maybelline</h3>
+            <p>$200</p>
+        </div>
+        <div class="product">
+            <img src="c:\Users\cbtis\Downloads\BLUSH.webp" alt="Producto 4">
+            <h3>One color mekeup Maybelline</h3>
+            <p>$350</p>
+        </div>
+        <div class="product">
+            <img src="c:\Users\cbtis\Downloads\PRIMER.webp" alt="Producto 5">
+            <h3>Fit primer opacizzante Maybelline</h3>
+            <p>$260</p>
+        </div>
+        <div class="product">
+            <img src="c:\Users\cbtis\Downloads\POLVO.webp" alt="Producto 6">
+            <h3>Maybelline polvo compacto matificante fit me</h3>
+            <p>$365</p>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>&copy; 2024 Mi Página Web. Todos los derechos reservados.</p>
+    </div>
+
+    <script>
+        const slides = document.querySelector('.slides');
+        const totalSlides = document.querySelectorAll('.slide').length;
+        let currentIndex = 0;
+
+        function showSlide(index) {
+            const offset = -index * 100;
+            slides.style.transform = `translateX(${offset}%)`;
+        }
+
+        document.getElementById('next').addEventListener('click', () => {
+            currentIndex = (currentIndex + 1) % totalSlides;
+            showSlide(currentIndex);
+        });
+
+        document.getElementById('prev').addEventListener('click', () => {
+            currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+            showSlide(currentIndex);
+        });
+
+        showSlide(currentIndex);
+    </script>
+</body>
+</html>
